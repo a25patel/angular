@@ -4,21 +4,24 @@ My notes and questions on the angular curriculum:
 
 
 Why Angular:
-  compared to the others (backbone, ember, knockout), Angular takes way less code,
-  easier to understand
-  live templating engine
-  great for testing
-  forward thinking, mobile market
-  directives can be a pro and a con
+  1. compared to the others (backbone, ember, knockout), Angular
+  2. takes way less code,
+  3. easier to understand
+  4. live templating engine
+  5. great for testing
+  6. forward thinking, mobile market
+  7. directives can be a pro and a con
 
 Complaints:
   1. directives can be hard for developers to wrap their heads around
   2. hard to debug
   3. router is limited
 
-MVC: yes  WHY?!?!?!?!?
+*MVC: yes  WHY?!?!?!?!?*
 
-Yes and no. Angular can use the jQuery file available in our app, if that file does not exist then angula falls back on it's built in jQuery subset, jQlite.
+jQuery Dependency:
+  Yes and no. Angular can use the jQuery file available in our app, if that file does not exist then angula falls back on it's built in jQuery subset, jQlite.
+  
 ng stands for angular.
 
 
@@ -26,6 +29,7 @@ ng stands for angular.
 Codecademy Angular Notes:
 app.js
 var app = angular.module('myApp', []);
+    // Contains difference components of angular app
     // can name things anything but this goes into the html,
       <body ng-app> or <body ng-app='myApp'>
     //directives -
@@ -38,8 +42,7 @@ $scope.title = 'Top Sellers in Books'}]);
 
 {{name}} - expression (used to display values on a page)
 
-filter - formats value of an expression
-
+filter - formats value of an expression {{name | uppercase (filter)}}
 
 
 Anguar Animations:
