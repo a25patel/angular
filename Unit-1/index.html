@@ -10,9 +10,9 @@
   </head>
   <body>
     <input type='text' placeholder ='what is your name?!' ng-model='name'>
-    <h1>My name is: {{name}}</h1>
+    <h2>My name is: {{name}}</h2>
     <input type='date' placeholder ='what is your Birthday?!' ng-model='date'>
-    <h1>Birthday: {{date}}</h1>
+    <h2>Birthday: {{date}}</h2>
 
 
     <!-- The option value is what shows up in the view when ng-model is used -->
@@ -27,12 +27,24 @@
     <p>{{1+2}}</p>
     <p>{{'BoJack' + ' Horseman'}}</p>
     <p>{[99,43,22].length}}</p>
+
+    <!-- messing with filters  -->
     <p>{{3.1459265359 | currency }}</p>
     <p>{{3.1459265359 | currency: '&#8364;' }}</p>
+    <p>
+      <input type="text" name="name" value="name" ng-model='slogan'>
+      <h3>Yelling: {{slogan | uppercase }}</h3>
+      <h3>Whispering: {{slogan | lowercase }}</h3>
+    </p>
+    <p>
+      {{3.1459265359 | number: 3}} <br>
+      {{3.1459265359 | number: 6}} <br>
+      {{3.1459265359 | number: 1}} <br>
+    </p>
+
     
-
-
-
+    <h3>How many digits should pi have: <input type="number"  min ='1' max ='9' name="name" value="" ng-model='digits'> </h3>
+    <h3>The {{digits}} digit of pi!</h3> {{3.1459265359 | number: digits}}
 
 
 
