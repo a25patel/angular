@@ -22,7 +22,17 @@
       <option value='dogs and cats'>Dogs and Cats</option>
       <option value='neither'>Neither</option>
     </select>
-    <h3>I love {{pets}} </h3>
+    <h3>I love {{ !pets ? 'pets' : pets}} </h3>
+
+    <p>{{1+2}}</p>
+    <p>{{'BoJack' + ' Horseman'}}</p>
+    <p>{[99,43,22].length}}</p>
+    <p>{{3.1459265359 | currency }}</p>
+    <p>{{3.1459265359 | currency: '&#8364;' }}</p>
+    
+
+
+
 
 
 

@@ -2,7 +2,6 @@ My notes and questions on the angular curriculum:
 
 * Helps build complex and single-page applications very quickly
 
-
 Why Angular:
   1. compared to the others (backbone, ember, knockout), Angular
   2. takes way less code,
@@ -26,12 +25,36 @@ ng stands for angular.
 
 
 <!-- 2 WAY DATA BINDING NOTES  -->
-
-What is two way data binding?
-  when the model changes, the view knows, and vice versa
-  automatically change when the data changes
-
 1. ng-model serves as grabbing the value of an input and then placing it everywhere handlebar notation is used
+2. Dirty Checking - angular is constantly checking whether changes have been made to variables in order to update the view
+  questions:
+  a. scope.$watch - change when whole value returned switches to new value
+  b. scope.$watchCollection - changes inside array or obj, when items added/removed/reordered
+  c. scope.$watch by value - changes in nexted data structures. most powerful/expensive.
+3. *?!?!?!?!?!?!?!?!?!?!??!
+  Name: {{'BoJack'}}*
+
+4. {{}} handlebar expression.
+
+5. Two-way data binding:
+    -when the model changes, the view knows, and vice versa
+    -automatically change when the data changes
+
+6. *$digest loop -  ?!?!?!?!?!?!??!*
+
+
+<!-- Expressions and Built in Filters  -->
+{{ expression | filter }}
+{{ priceVariable | currencyFilter}}
+
+*Cannot write conditionals or loops inside expressions*
+
+* Filter - bits ofcode that format data inside expressions
+
+
+
+
+
 
 
 
