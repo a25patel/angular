@@ -21,7 +21,7 @@ Complaints:
 
 jQuery Dependency:
   Yes and no. Angular can use the jQuery file available in our app, if that file does not exist then angula falls back on it's built in jQuery subset, jQlite.
-  
+
 ng stands for angular.
 
 
@@ -43,6 +43,23 @@ $scope.title = 'Top Sellers in Books'}]);
 {{name}} - expression (used to display values on a page)
 
 filter - formats value of an expression {{name | uppercase (filter)}}
+
+Directives:
+  Create new directive:
+    app.directive('appInfo', function(){return{
+      restrict: 'E',
+      scope: {
+        info: '='
+      },
+      templateUrl: 'js/directives/appInfo.html'
+      };});
+    * restrict - how the directive will be used
+    * E - used as a new HTML element
+    * scope - pass information in this directive through attribute 'info'
+    * = - tells directive to look for attribute names 'info' in element
+      ex: <app-info info='something'></app-info>
+    * data in 'info' becomes available to use in template given by templateUrl
+      * templateUrl specs HTML to use in order to display data in scope.info
 
 
 Anguar Animations:
