@@ -25,8 +25,23 @@ jQuery Dependency:
 ng stands for angular.
 
 
+<!-- 2 WAY DATA BINDING NOTES  -->
 
-Codecademy Angular Notes:
+What is two way data binding?
+  when the model changes, the view knows, and vice versa
+  automatically change when the data changes
+
+1. ng-model serves as grabbing the value of an input and then placing it everywhere handlebar notation is used
+
+
+
+
+
+
+
+
+
+<!-- Codecademy Angular Notes: -->
 app.js
 var app = angular.module('myApp', []);
     // Contains difference components of angular app
@@ -51,7 +66,21 @@ Directives:
       scope: {
         info: '='
       },
-      templateUrl: 'js/directives/appInfo.html'
+      templateUrl: 'js/directives/appInfo.html',
+      link: function(scope, element, attrs){
+      	scope.buttonText ='Install',
+      	scope.installed = false,
+      	scope.download = function(){
+        	element.toggleClass('btn-active');
+        	if(scope.installed){
+          	scope.buttonText = 'Install';
+          	scope.installed = false;
+          } else{
+          	scope.buttonText = 'Uninstall';
+          	scope.installed = true;
+          }
+        }
+      }
       };});
     * restrict - how the directive will be used
     * E - used as a new HTML element
@@ -59,7 +88,13 @@ Directives:
     * = - tells directive to look for attribute names 'info' in element
       ex: <app-info info='something'></app-info>
     * data in 'info' becomes available to use in template given by templateUrl
-      * templateUrl specs HTML to use in order to display data in scope.info
+    * templateUrl specs HTML to use in order to display data in scope.info
+    * link - create interactive directives that respond to user actions
+      * Scope input - directive scope, new properties become attachec and available
+      * element input - HTML element
+      * attrs input - contains element's attributes
+
+      * buttonText property, installed property, and download()
 
 
 Anguar Animations:

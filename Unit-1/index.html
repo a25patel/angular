@@ -3,14 +3,35 @@
   <head>
     <meta charset="utf-8">
     <title>Angular Intro</title>
+
+      <!-- Angular Links -->
     <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.js'> </script>
     <script type="text/angular" src ='https://code.jquery.com/jquery-git2.min.js'></script>
   </head>
   <body>
     <input type='text' placeholder ='what is your name?!' ng-model='name'>
     <h1>My name is: {{name}}</h1>
+    <input type='date' placeholder ='what is your Birthday?!' ng-model='date'>
+    <h1>Birthday: {{date}}</h1>
 
-    <input type=''>
+
+    <!-- The option value is what shows up in the view when ng-model is used -->
+    <select class="pets" name="pets" ng-model='pets'>
+      <option value='dogs'>Dogs</option>
+      <option value='cats'>Cats</option>
+      <option value='dogs and cats'>Dogs and Cats</option>
+      <option value='neither'>Neither</option>
+    </select>
+    <h3>I love {{pets}} </h3>
+
+
+
+<!-- Modules  -->
+
+<!-- Controllers -->
+
+<!-- Directives  -->
+
 
   </body>
 </html>
