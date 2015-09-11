@@ -6,9 +6,16 @@
 
       <!-- Angular Links -->
     <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.js'> </script>
-    <script type="text/angular" src ='https://code.jquery.com/jquery-git2.min.js'></script>
+    <script type="text/javascript" src ='https://code.jquery.com/jquery-git2.min.js'></script>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+         $("#initial").val("BoJack");
+      });
+    </script>
   </head>
   <body>
+    <input id = "initial" type='text' ng-model='name2' value="BoJack" />
     <input type='text' placeholder ='what is your name?!' ng-model='name'>
     <h2>My name is: {{name}}</h2>
     <input type='date' placeholder ='what is your Birthday?!' ng-model='date'>
@@ -25,8 +32,8 @@
     <h3>I love {{ !pets ? 'pets' : pets}} </h3>
 
     <p>{{1+2}}</p>
-    <p>{{'BoJack' + ' Horseman'}}</p>
-    <p>{[99,43,22].length}}</p>
+    <p>{{name2 + ' Horseman'}}</p>
+    <p>{{[99,43,22].length}}</p>
 
     <!-- messing with filters  -->
     <p>{{3.1459265359 | currency }}</p>
@@ -42,7 +49,7 @@
       {{3.1459265359 | number: 1}} <br>
     </p>
 
-    
+
     <h3>How many digits should pi have: <input type="number"  min ='1' max ='9' name="name" value="" ng-model='digits'> </h3>
     <h3>The {{digits}} digit of pi!</h3> {{3.1459265359 | number: digits}}
 
