@@ -32,13 +32,13 @@ ng stands for angular.
   c. scope.$watch by value - changes in nexted data structures. most powerful/expensive.
 
 
-4. {{}} handlebar expression.
+<!-- 4. {{}} handlebar expression.
 
 5. Two-way data binding:
     -when the model changes, the view knows, and vice versa
     -automatically change when the data changes
 
-6. *$digest loop -  ?!?!?!?!?!?!??!* Governs how callbacks work 
+6. *$digest loop -  ?!?!?!?!?!?!??!* Governs how callbacks work  -->
 
 
 <!-- Expressions and Built in Filters  -->
