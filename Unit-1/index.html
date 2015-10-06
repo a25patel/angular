@@ -1,66 +1,193 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app='myApp'>
   <head>
     <meta charset="utf-8">
     <title>Angular Intro</title>
 
       <!-- Angular Links -->
-    <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.js'> </script>
-    <script type="text/javascript" src ='https://code.jquery.com/jquery-git2.min.js'></script>
-
-    <script type="text/javascript">
-      $(document).ready(function(){
-         $("#initial").val("BoJack");
-      });
-    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.js'> </script>
+    <script src ='https://code.jquery.com/jquery-git2.min.js'></script>
+    <style media="screen">
+      .text{
+        color: orange;
+      }
+      .highlight {
+        background-color: yellow;
+      }
+      .pong{
+        background-color: lightblue;
+      }
+      .redback{
+        background-color: red;
+      }
+      .greenback{
+        background-color: green;
+      }
+    </style>
   </head>
-  <body>
-    <input id = "initial" type='text' ng-model='name2' value="BoJack" />
-    <input type='text' placeholder ='what is your name?!' ng-model='name'>
-    <h2>My name is: {{name}}</h2>
-    <input type='date' placeholder ='what is your Birthday?!' ng-model='date'>
-    <h2>Birthday: {{date}}</h2>
 
+  <body ng-controller='mainController'>
+    <div class="color">
+      <h4>Favorite Color: {{favColor}}</h4>
+      <h4>Seconds in A Century: {{secondsInACentury}}</h4>
+      <h4>Current Date: {{rightNow | date:'EEEE, MMMM d, y'}}</h4>
+    </div>
+    <div class="symbols">
+      <h4 ng-repeat='symbol in symbols'> {{symbol}} </h4>
+      <h4 ng-repeat ='number in numbers track by $index'> {{number}}</h4>
+      <h4 ng-repeat = 'object in objects'>Name: {{object.Name}}</h4>
+    </div>
+    <div ng-class="show" ng-show='1 + 3 == 4'>
+      Show
+    </div>
+    <div class="hide" ng-hide='1 + 3 == 4'>
+      Hide
+    </div>
+    <div ng-class="{highlight: 4 + 4 == 8}"> 4 + 4 = 8</div>
+    <div ng-class="{highlight: 4 + 4 == 10}">4 + 4 = 10</div>
 
-    <!-- The option value is what shows up in the view when ng-model is used -->
-    <select class="pets" name="pets" ng-model='pets'>
-      <option value='dogs'>Dogs</option>
-      <option value='cats'>Cats</option>
-      <option value='dogs and cats'>Dogs and Cats</option>
-      <option value='neither'>Neither</option>
+    <div class="password">
+      <h3>Sign Up page</h3>
+      <h2><input type="password" name="password" placeholder="password" id='password' ng-model='password'></h2>
+      Your password is {{password.length}} characters
+
+      <div class="submit">
+        <div class="show" ng-show='password.length > 6'>
+          <input type="submit" name="submit" value="Sign Up!">
+        </div>
+        <div class="show" ng-show='password.length < 6'>
+          Password is invalid!
+        </div>
+      </div>
+  </div>
+
+    <h1>Camera Shop</h1>
+    <select class="filter" name="filter" ng-model='dropdown'>
+      <option value='price'>Price</option>
+      <option value='rating'>Rating</option>
     </select>
-    <h3>I love {{ !pets ? 'pets' : pets}} </h3>
+    <div class="cameras" ng-repeat='camera in cameras | orderBy: dropdown'>
+      <span>{{camera.title}}</span><br>
+      <span ng-class='{text: camera.onSale}'>Price: {{camera.price | currency}}
+        <span ng-show='camera.onSale'> ON SALE!</span>
+      </span><br>
+      <span>Rating: {{camera.rating}}</span><br>
+      <img ng-src="{{camera.image}}" width='100px;'/><br>
+    </div>
+  </div>
 
-    <p>{{1+2}}</p>
-    <p>{{name2 + ' Horseman'}}</p>
-    <p>{{[99,43,22].length}}</p>
+  <h3>The number is: {{number}}</h3>
+  <button ng-click="pickRandomNumber()">Pick Random Number</button>
 
-    <!-- messing with filters  -->
-    <p>{{3.1459265359 | currency }}</p>
-    <p>{{3.1459265359 | currency: '&#8364;' }}</p>
-    <p>
-      <input type="text" name="name" value="name" ng-model='slogan'>
-      <h3>Yelling: {{slogan | uppercase }}</h3>
-      <h3>Whispering: {{slogan | lowercase }}</h3>
-    </p>
-    <p>
-      {{3.1459265359 | number: 3}} <br>
-      {{3.1459265359 | number: 6}} <br>
-      {{3.1459265359 | number: 1}} <br>
-    </p>
+  <h2>Text Reverse</h2>
+  <input type="text" name="reverse" ng-model='word'>
+  <h4>Your word is: {{word}}</h4>
+  <input type="submit" name="submit" value="Reverse!" ng-click='reverse(word)'>
 
 
-    <h3>How many digits should pi have: <input type="number"  min ='1' max ='9' name="name" value="" ng-model='digits'> </h3>
-    <h3>The {{digits}} digit of pi!</h3> {{3.1459265359 | number: digits}}
+  <h3>Ping Pong Scorer</h3>
+    <div class="player1" ng-class="{redback: score2 >= 11, greenback: score1 >= 11}" ng-click='addScore1(score1)'>
+      <h3>Player 1</h3>
+      <div class="score1">{{score1}}</div>
+    </div>
+    <div class="player2" ng-class="{redback: score1 >= 11, greenback: score2 >= 11}" ng-click='addScore2(score2)'>
+      <h3>Player 2</h3>
+      <div class="score2">{{score2}}</div>
+    </div>
+    <br><button class="reset" ng-click='reset()'>Reset</button>
+
+  <h1>Contact List Exercise</h1>
+    <div ng-controller="contacts">
+      <label for="name">Name</label>
+      <input type="text" id="name" ng-model="name"></input>
+      <label for="email">Email</label>
+      <input type="text" id="email" ng-model="email"></input>
+      <label for="phone">Phone</label>
+      <input type="text" id="phone" ng-model="phone"></input>
+      <button class='add' ng-click='addContact(name, email, phone)'>Add Contact</button>
+      <br>
+      <label for="Search">Search</label>
+      <input type="text" id="search" ng-model="search">
+      <br>
+      <table>
+        <thead>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+        </thead>
+        <tbody>
+          <tr ng-repeat="contact in contacts | filter:search" ng-mouseover='show()'>
+            <td>{{contact.name}}</td>
+            <td>{{contact.email}}</td>
+            <td>{{contact.phone}}</td>
+        </tbody>
+      </table>
+    </div>
+  </body>
+
+
 
 
 
 <!-- Modules  -->
+<script type="text/javascript" src='app.js'>
 
+</script>
 <!-- Controllers -->
+<script type="text/javascript" src='controllers/mainController.js'>
+
+</script>
 
 <!-- Directives  -->
 
-
-  </body>
+<!-- Services -->
 </html>
+
+
+
+
+<!--
+<input id = "initial" type='text' ng-model='name2' value="BoJack" />
+<input type='text' placeholder ='what is your name?!' ng-model='name'>
+  <h2>My name is: {{name}}</h2>
+<input type='date' placeholder ='what is your Birthday?!' ng-model='date'>
+  <h2>Birthday: {{date}}</h2>
+
+
+The option value is what shows up in the view when ng-model is used
+<select class="pets" name="pets" ng-model='pets'>
+  <option value='dogs'>Dogs</option>
+  <option value='cats'>Cats</option>
+  <option value='dogs and cats'>Dogs and Cats</option>
+  <option value='neither'>Neither</option>
+</select>
+<h3>I love {{ !pets ? 'pets' : pets}} </h3>
+
+<p>{{1+2}}</p>
+<p>{{name2 + ' Horseman'}}</p>
+<p>{{[99,43,22].length}}</p>
+
+messing with filters
+<p>{{3.1459265359 | currency }}</p>
+<p>{{3.1459265359 | currency: '&#8364;' }}</p>
+<p>
+  <input type="text" name="name" value="name" ng-model='slogan'>
+  <h3>Yelling: {{slogan | uppercase }}</h3>
+  <h3>Whispering: {{slogan | lowercase }}</h3>
+</p>
+<p>
+  {{3.1459265359 | number: 3}} <br>
+  {{3.1459265359 | number: 6}} <br>
+  {{3.1459265359 | number: 1}} <br>
+</p>
+
+
+<h3>How many digits should pi have: <input type="number"  min ='1' max ='9' name="name" value="" ng-model='digits'> </h3>
+<h3>The {{digits}} digit of pi!</h3> {{3.1459265359 | number: digits}}
+ -->
+
+ <!-- <script type="text/javascript">
+   $(document).ready(function(){
+      $("#initial").val("BoJack");
+   });
+ </script> -->
