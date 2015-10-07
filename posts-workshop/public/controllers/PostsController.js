@@ -1,3 +1,6 @@
-app.controller('PostsController', ['$scope', function($scope){
-  $scope.variable = 'yellow'; 
-}]);
+app.controller('PostsController', function($scope, PostsService){
+  $scope.variable = 'yellow';
+  PostsService.all().then(function(posts){
+    $scope.posts = posts;
+  })
+});

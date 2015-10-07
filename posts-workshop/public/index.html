@@ -1,9 +1,18 @@
+<!--
+1. Add a form so users can add new posts.
+2. Send form data to your back end
+add another function to your PostsService that sends the data to an Express route. What's a good name for that function? How about create?
+create an Express route. What http verb do we use to post data? What should the path be?
+Next, do delete or update. Stay calm and think things through. Have fun and explore. Make mistakes and don't worry about them!
+ -->
+
 <!DOCTYPE html>
 <html ng-app='posts-workshop'>
   <head>
     <meta charset="utf-8">
     <title>Angular + Express</title>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
   </head>
 
   <body ng-controller='PostsController'>
@@ -80,6 +89,6 @@
   <!-- Directives  -->
 
   <!-- Services  -->
-
+  <script src='services/PostsService.js'></script>
   </body>
 </html>
