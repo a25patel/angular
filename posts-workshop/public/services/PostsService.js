@@ -4,6 +4,9 @@ app.factory('PostsService', function($http){
       return $http.get('/api/posts').then(function(response){
         return response.data;
       })
+    },
+    create: function () {
+      
     }
   }
 })
