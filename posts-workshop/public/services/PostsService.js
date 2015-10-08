@@ -5,8 +5,11 @@ app.factory('PostsService', function($http){
         return response.data;
       })
     },
-    create: function () {
-      
-    }
+    create: function (newPost) {
+      return $http.post('/api/posts', newPost).then(function(response){
+        console.log(response);
+      })
+    },
+    
   }
 })
