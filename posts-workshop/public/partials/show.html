@@ -1,0 +1,11 @@
+<h1>One Post</h1>
+<div class="well">
+  <img class='thumbnail pull-left' ng-src="{{onePost.image}}" />
+  <h3>{{onePost.title}}</h3>
+  <h5>-Posted by: {{onePost.author}} on {{onePost.create_at | date}}</h5>
+  <p>
+    {{onePost.description}}
+  </p>
+  <a ui-sref="edit({id: onePost._id})" ng-click='edit()'>Edit Post</a>
+  <button type="button" ng-click='delete()'>Delete Post</button>
+</div>
